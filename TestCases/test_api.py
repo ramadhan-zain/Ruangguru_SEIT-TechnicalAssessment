@@ -52,9 +52,10 @@ class TestAPI:
 
         for i in price_list: assert i <= max_price
 
-    def test_sortBy(self):
+    def test_sortBy_orderBy(self):
         sort_by = 'price'
-        query = {'sortBy': sort_by}
+        order_by = 'DESC'
+        query = {'sortBy': sort_by, 'orderBy': order_by}
         response = requests.get(url="https://skillacademy.com/skillacademy/discovery/search", params=query)
 
         results = response.json()['data']['data']
@@ -68,3 +69,22 @@ class TestAPI:
 
         for i in range(len(price_list) - 1):
             assert int(price_list[i]) >= int(price_list[i + 1])
+
+    def test_page_size_page(self):
+        page = 2
+        page_size = 10
+        query = {'page': page, "pageSize": page_size}
+        response = requests.get(url="https://skillacademy.com/skillacademy/discovery/search", params=query)
+
+        pagejson = response.json()['data']['page']
+        pagesizejson = response.json()['data']['pageSize']
+        totalpagejson = response.json()['data']['pageSize']
+        results = response.json()['data']['data']
+
+        print(f"pagejson: {response.json()['data']['page']}")
+        print(f"pagesizejson: {response.json()['data']['pageSize']}")
+        print(f"totalpagesizejson: {response.json()['data']['totalPage']}")
+        print(f"result length size: {len(results)}")
+
+        assert pagejson == page
+        assert pagesizejson == page_size
