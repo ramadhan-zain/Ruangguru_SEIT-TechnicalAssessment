@@ -14,6 +14,7 @@ class HomePage:
     # min_result = (By.XPATH, "//*[contains(text(), 'Hasil untuk')]")
     # min_result = (By.XPATH, "//p[@class='css-d7vjwx']")
     search_result_sum = (By.XPATH, "//span[@data-testid='total-result']")
+    search_result_query = (By.XPATH, "//span[@data-testid='current-keyword']")
 
     def get_search_bar(self):
         return self.driver.find_element(*HomePage.search_bar)
@@ -27,4 +28,8 @@ class HomePage:
     def get_search_result_sum(self):
         # return self.driver.find_element(*HomePage.search_result_sum)
         return self.wait.until(EC.presence_of_element_located((HomePage.search_result_sum)))
+
+    def get_search_result_query(self):
+        # return self.driver.find_element(*HomePage.search_result_sum)
+        return self.wait.until(EC.presence_of_element_located((HomePage.search_result_query)))
 
