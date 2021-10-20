@@ -11,7 +11,7 @@ from TestData.SearchData import SearchData
 
 class TestFunctional(BaseClass):
 
-    def test_e2e(self, setup, get_data):
+    def test_search(self, setup, get_data):
         driver = self.driver
         wait = self.wait
         home_page = HomePage(driver, wait)

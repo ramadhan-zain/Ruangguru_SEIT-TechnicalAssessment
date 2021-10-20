@@ -37,4 +37,6 @@ def setup(request):
     driver.close()
 
 
-
+@pytest.fixture
+def api_setup():
+    pass
