@@ -88,3 +88,6 @@ class TestAPI:
 
         assert pagejson == page
         assert pagesizejson == page_size
+    ##
+    # API testing on minDuration and maxDuration are being questioned in email
+    ##

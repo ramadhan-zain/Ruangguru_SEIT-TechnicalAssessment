@@ -16,14 +16,8 @@ class TestFunctional(BaseClass):
         wait = self.wait
         home_page = HomePage(driver, wait)
 
-        # text_search = "test automation"
-
         home_page.get_search_bar().send_keys(get_data["query"])
         home_page.get_search_icon().click()
-
-        # text = home_page.get_min_result().text
-        # print(text)
-        # home_page.get_min_result()
 
         jumlah_hasil = home_page.get_search_result_sum().text
         print(f"\nnumber of search results: {jumlah_hasil}")
@@ -33,7 +27,6 @@ class TestFunctional(BaseClass):
 
         assert get_data["query"] in search_result
 
-        # driver.refresh()
         home_page.get_search_bar().clear()
 
     @pytest.fixture(params=SearchData.test_HomePage_data)
