@@ -10,9 +10,35 @@ This Automation testing is to fulfill the requirements of recruitment process on
 
 In order to utilise this project you need to have the following installed locally:
 
-* Chrome and Chromedriver (UI tests use Chrome by default, can be changed in config)
+* Chrome and Chromedriver (UI tests uses Chrome by default, can be changed in config)
 * Python 3
+* optional: Firefox and GeckoDriver
 
-to install dependencies that are listed on the `requirement.txt`
+to install dependencies that are listed on the `requirements.txt`
 
 `pip install -r requirements.txt`
+
+For the UI testing, the website url that is used is `https://skillacademy.com/`
+while the API endpoint takes place on `https://skillacademy.com/skillacademy/discovery/search`
+
+## Usage
+
+The project is broken into separate modules for UI and API testing. Each of these modules can be utilised independently of the others using following codes on cmd.
+
+To run all modules, navigate to to the `root` directory and run:
+
+`pytest -v -s`
+
+To run UI tests only on the skillacademy website, run:
+
+`pytest TestCases\test_search.py -v -s`
+
+To run API tests only, run:
+
+`pytest TestCases\test_api.py -v -s`
+
+If the virtual environment will be used, first activate the `venv`:
+
+`venv\Scripts\activate`
+
+and install the requirements by the `venv` 
